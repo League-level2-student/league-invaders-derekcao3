@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,17 +11,65 @@ import javax.swing.Timer;
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer timer;
 	GameObject gameObject;
-	
+	final int MENU_STATE = 0;
+
+	final int GAME_STATE = 1;
+
+	final int END_STATE = 2;
+	int currentState = MENU_STATE;
+
 	GamePanel() {
 
 		timer = new Timer(1000 / 60, this);
-		gameObject = new GameObject(10,10,100,100);
 	}
 
 	@Override
 
 	public void paintComponent(Graphics g) {
-		gameObject.draw(g);
+		if (currentState == MENU_STATE) {
+
+			drawMenuState(g);
+
+		} else if (currentState == GAME_STATE) {
+
+			drawGameState(g);
+
+		} else if (currentState == END_STATE) {
+
+			drawEndState(g);
+
+		}
+	}
+
+	void updateMenuState() {
+
+	}
+
+	void updateGameState() {
+
+	}
+
+	void updateEndState() {
+
+	}
+
+	void drawMenuState(Graphics g) {
+		g.setColor(Color.BLUE);
+
+		g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);
+
+	}
+
+	void drawGameState(Graphics g) {
+		g.setColor(Color.BLACK);
+
+		g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);
+	}
+
+	void drawEndState(Graphics g) {
+		g.setColor(Color.RED);
+
+		g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);
 	}
 
 	void startGame() {
@@ -29,7 +78,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		gameObject.update();
+		if (currentState == MENU_STATE) {
+
+			updateMenuState();
+
+		} else if (currentState == GAME_STATE) {
+
+			updateGameState();
+
+		} else if (currentState == END_STATE) {
+
+			updateEndState();
+
+		}
 		repaint();
 	}
 
@@ -37,6 +98,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		System.out.println("1");
+		if(KeyEvent.VK_ENTER==arg0.getKeyCode()) {
+		
+		if (currentState == END_STATE) {
+
+			currentState = MENU_STATE;
+
+		}
+		else if (currentState < END_STATE) {
+
+			currentState++;
+
+		}
+		}
+
 	}
 
 	@Override
