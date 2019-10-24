@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,8 @@ import javax.swing.Timer;
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Timer timer;
 	GameObject gameObject;
+	Font titleFont;
+	Font titleFont2;
 	final int MENU_STATE = 0;
 
 	final int GAME_STATE = 1;
@@ -21,6 +24,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	GamePanel() {
 
 		timer = new Timer(1000 / 60, this);
+		titleFont = new Font("Arial",Font.PLAIN,48);
+		titleFont2 = new Font("Arial",Font.PLAIN,20);
 	}
 
 	@Override
@@ -57,7 +62,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.BLUE);
 
 		g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);
-
+		g.setFont(titleFont);
+		g.setColor(Color.WHITE);
+		g.drawString("LEAGUE INVADERS", 20, 100);
+		g.setFont(titleFont2);
+		g.setColor(Color.WHITE);
+		g.drawString("Press ENTER to start", 135, 328);
+		g.setFont(titleFont2);
+		g.setColor(Color.WHITE);
+		g.drawString("Press SPACE for instructions", 100, 500);
 	}
 
 	void drawGameState(Graphics g) {
