@@ -83,6 +83,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.RED);
 
 		g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);
+		g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);
+		g.setFont(titleFont);
+		g.setColor(Color.WHITE);
+		g.drawString("GAME OVER", 95, 100);
+		g.setFont(titleFont2);
+		g.setColor(Color.WHITE);
+		g.drawString("You Killed 0 Enemies", 135, 328);
+		g.setFont(titleFont2);
+		g.setColor(Color.WHITE);
+		g.drawString("Press ENTER to resart", 125, 500);
+		
 	}
 
 	void startGame() {
