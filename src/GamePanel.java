@@ -139,6 +139,7 @@ object.update();
 
 		}
 		}
+	
 		if(KeyEvent.VK_LEFT==arg0.getKeyCode()) {
 			rocket.left=true;
 		}
@@ -170,6 +171,10 @@ object.update();
 		else if(KeyEvent.VK_UP==arg0.getKeyCode()) {
 			rocket.up=false;
 		}
+		if(KeyEvent.VK_SPACE==arg0.getKeyCode()) {
+			 object.addProjectile(new Projectile(rocket.x, rocket.y, 10, 10));
+			
+			}
 
 	}
 
