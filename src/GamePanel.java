@@ -55,6 +55,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	void updateGameState() {
 object.update();
 object.manageEnemies();
+object.checkCollision();
+object.purgeObjects();
+if(rocket.isAlive==false) {
+	currentState=END_STATE;
+}
 	}
 
 	void updateEndState() {
@@ -94,7 +99,7 @@ object.manageEnemies();
 		g.drawString("GAME OVER", 95, 100);
 		g.setFont(titleFont2);
 		g.setColor(Color.WHITE);
-		g.drawString("You Killed 0 Enemies", 135, 328);
+		g.drawString("You Killed " +object.getScore()+ " Enemies", 135, 328);
 		g.setFont(titleFont2);
 		g.setColor(Color.WHITE);
 		g.drawString("Press ENTER to resart", 125, 500);
