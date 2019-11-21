@@ -135,7 +135,8 @@ if(rocket.isAlive==false) {
 		if(KeyEvent.VK_ENTER==arg0.getKeyCode()) {
 		
 		if (currentState == END_STATE) {
-
+		rocket = new Rocketship(250,700,50,50);
+		object = new ObjectManager(rocket);
 			currentState = MENU_STATE;
 
 		}
