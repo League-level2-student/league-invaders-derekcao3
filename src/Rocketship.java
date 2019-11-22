@@ -19,25 +19,23 @@ public class Rocketship extends GameObject {
 
 	void update() {
         super.update();
-		if (left) {
+		if (left && x > 0) {
 			x = x - speed;
 		}
-		if (right) {
+		if (right && x<LeagueInvaders.width-width) {
 			x = x + speed;
 		}
-		if (down) {
+		if (down && y<LeagueInvaders.height-height) {
 			y = y + speed;
 		}
-		if (up) {
+		if (up && y>0) {
 			y = y - speed;
 		}
 
 	}
 
 	void draw(Graphics g) {
-		g.setColor(Color.BLUE);
-
-		g.fillRect(x, y, width, height);
+		  g.drawImage(GamePanel.rocketImg, x, y, width, height, null);
 
 	}
 

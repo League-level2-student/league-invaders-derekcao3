@@ -5,7 +5,7 @@ import java.util.Random;
 public class ObjectManager {
 	Rocketship rocketship;
 	long enemyTimer = 0;
-	int enemySpawnTime = 2000;
+	int enemySpawnTime = 300;
 	int score = 0;
 
 	ObjectManager(Rocketship rocketship) {
